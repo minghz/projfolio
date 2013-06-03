@@ -1,0 +1,14 @@
+
+<div id="retrievals">
+    <h1>Reset your password</h1>
+
+    <%= form_tag retrievals_path do %>
+    <div class="field">
+        The e-mail used for your account: <br />
+        <%= text_field_tag 'email'%>
+    </div>
+    <div class="actions">
+        <%= submit_tag "Reset", :class => "submit" %>
+    </div>
+    <% end %>
+</div>

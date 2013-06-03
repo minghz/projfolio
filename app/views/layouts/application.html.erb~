@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ed3</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+
+<% if !current_page?(root_path) %>
+	<%= render 'layouts/logo' %>
+	<%= render 'layouts/menu' %>
+<% end %>
+
+<center>
+<% flash.each do |key, value| %>
+  <% if key.to_s == 'success' %>
+    <div class="flash-success"> <p><%= value %></p> </div>
+  <% elsif key.to_s == 'error' %>
+    <div class="flash-error"> <p><%= value %></p> </div>
+  <% else %>
+    <p><%= value %></p>
+  <% end %>
+<% end %>
+</center>
+
+<%= yield %>
+
+<% if !current_page?(root_path) %>
+  <%= render 'layouts/footer' %>
+<% end %>
+
+<%= debug(params) if Rails.env.development? %>
+
+</body>
+</html>

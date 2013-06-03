@@ -1,0 +1,16 @@
+
+<% @comments.each do |comment| %>
+  <p>_________________</p>
+  <p>Commenter: <%= comment.commenter %></p>
+  <p>Comment: <%= comment.body %> </p>
+
+<% if false %>
+  TODO: Find some way to delete comments!!  
+<p>
+  <%= link_to 'Destroy Comment', comment,
+          :confirm => 'Are you sure?',
+          :method => :delete %>
+<p>
+<% end %>
+          
+<% end %>

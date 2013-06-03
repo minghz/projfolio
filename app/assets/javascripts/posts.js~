@@ -1,0 +1,6 @@
+
+
+$("<%= post.id %>").bind("click", function(){
+    window.open("http://www.w3schools.com", "_self");
+    //alert("clicked! <%= post.id %>");
+});
