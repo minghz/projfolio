@@ -8,7 +8,6 @@ Ed3::Application.routes.draw do
 #  map.resources :posts, :has_many => :comments 
 #  map.resources :users, :has_many => :comments
 
-
   resources :sessions, only: [:new, :create, :destroy]
   resources :retrievals, only: [:new, :create, :edit, :update]
 

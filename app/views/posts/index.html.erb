@@ -5,7 +5,7 @@
 
             <div class="post_box" id="<%= post.id %>">
                 <b><%= link_to post.title, post %> by <%= post.user.name %></b>
-                <p><%= truncate(post.content, :length => 200, :separator => ' ') %></p>
+                <p><%= truncate(post.description, :length => 200, :separator => ' ') %></p>
                 
                 <% if signed_in? && current_user.admin? %> 
                 	<%= link_to 'Edit', edit_post_path(post) %>
