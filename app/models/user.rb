@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
 #    assert !ActionMailer::Base.deliveries.empty?
 #
 #    assert_equal [user.email], email.to
-#    assert_equal 'Ed3 Password Reset', email.subject
+#    assert_equal 'Projfolio Password Reset', email.subject
 #    logger.debug email.body.to_s   
   
   end

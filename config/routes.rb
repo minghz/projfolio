@@ -1,4 +1,4 @@
-Ed3::Application.routes.draw do
+Projfolio::Application.routes.draw do
 
   resources :posts do
     resources :comments

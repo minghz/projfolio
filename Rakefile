@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Ed3::Application.load_tasks
+Projfolio::Application.load_tasks

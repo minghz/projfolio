@@ -1,4 +1,4 @@
-Ed3::Application.configure do
+Projfolio::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
@@ -68,5 +68,5 @@ Ed3::Application.configure do
   # Allow mailer url inclusion
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { :host => "ed3.herokuapp.com" }
+  config.action_mailer.default_url_options = { :host => "projfolio.herokuapp.com" }
 end

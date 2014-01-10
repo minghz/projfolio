@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "ed3.herokuapp@gmail.com"
+  default from: "projfolio.herokuapp@gmail.com"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -8,7 +8,7 @@ class UserMailer < ActionMailer::Base
   #
   def password_reset(user)
     @user = user
-    mail :to => user.email, :subject => "Ed3 Password Reset"
+    mail :to => user.email, :subject => "Projfolio Password Reset"
   end
 
 end

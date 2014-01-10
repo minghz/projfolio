@@ -2,7 +2,7 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
-Ed3::Application.initialize!
+Projfolio::Application.initialize!
 
 #Configuring mailing smtp
 ActionMailer::Base.delivery_method = :smtp
