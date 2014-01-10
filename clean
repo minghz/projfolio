@@ -1,0 +1,7 @@
+#!/bin/bash
+
+find * -name "*~" |xargs rm -rf
+find .* -name "*~" |xargs rm -rf
+find * -name "*.swp" |xargs rm -rf
+
+echo "Success: cleaned out all *.swp and *~ files"
