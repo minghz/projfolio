@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 
+  before_filter :post_owner, only: [:edit, :update, :destroy]
   #http_basic_authenticate_with :name => "dhh", :password => "secret", :except => [:index, :show]
 
   # GET /posts
@@ -109,4 +110,23 @@ class PostsController < ApplicationController
 
     redirect_to posts_url
   end
+
+  private
+    def post_owner
+      if signed_in?
+        post = Post.find(params[:id])
+        @owner = User.find(post.user_id)
+        if current_user?(@owner)
+        else
+          flash[:error] = "You are not the owner!"
+          redirect_to(post)
+        end
+      else
+        post = Post.find(params[:id])
+        flash[:error] = "You are not signed in!"
+        redirect_to(post)
+      end
+    end
+
+
 end

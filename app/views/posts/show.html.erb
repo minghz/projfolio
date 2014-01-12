@@ -29,7 +29,9 @@
 
     <br />
 
-    <%= link_to 'Edit', edit_post_path(@post) %> |
+    <% if signed_in? %>
+      <%= link_to 'Edit', edit_post_path(@post) %> |
+    <% end %>
     <%= link_to 'All Posts', posts_path %>
   
 </div>
