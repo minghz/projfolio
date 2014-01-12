@@ -1,3 +1,5 @@
 <div id="logo">
-  <a href="<%= posts_path %>"><img src="/ProjFolio-logo.jpg"/></a>
+  <%= link_to(posts_path) do %>
+    <% image_tag "ProjFolio-logo.jpg" %>
+  <% end %>
 </div>
