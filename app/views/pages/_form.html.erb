@@ -1,0 +1,45 @@
+<%= form_for [@pageable, @page], :html => {:multipart => true} do |f| %>
+  <% if @page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@page.errors.count, "error") %> 
+          prohibited this page from being saved:
+      </h2>
+
+      <ul>
+      <% @page.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :chapter %><br>
+    <%= f.text_field :chapter %>
+  </div>
+  <div class="field">
+    <%= f.label :number %><br>
+    <%= f.text_field :number %>
+  </div>
+
+  <p> Page </p>
+  <%= image_tag(@page.image_url) if @page.image? %>
+  <div class="field">
+    <%= f.file_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :remote_image_url, "or image URL" %>
+    <br />
+    <%= f.text_field :remote_image_url %>
+  </div>
+  <%= f.check_box :remove_image %>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

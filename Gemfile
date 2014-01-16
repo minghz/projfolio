@@ -29,6 +29,11 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'jquery-rails'
 
+# for image uploads
+gem 'carrierwave'
+# for image resizing
+gem 'rmagick'
+
 # To use ActiveModel has_secure_password
 
 # To use Jbuilder templates for JSON

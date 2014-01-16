@@ -5,12 +5,38 @@
       
       <p><%= @post.description %></p>
 
-      <% unless @post.steps.nil? %>
+      <% unless @post.steps.empty? %>
         <p>Steps: <%= @post.steps %> </p>
       <% end %>
 
       <% if @post.tags.any? %>
         <p>Tags:<%= join_tags(@post) %></p>
+      <% end %>
+
+      <br />
+      <br />
+    
+      <% if @post.pages.any? %>
+        <h3> Pages </h3>
+        <% @post.pages.each do |page| %>
+          <div class="page">
+            <%= page.id %>
+            
+            <%= image_tag page.image_url.to_s %>
+            | 
+            <% if signed_in? && current_user.admin? %>
+              <%= link_to 'Destroy', 
+                url_for([@post, page]),
+                method: :delete,
+                data: { confirm: 'Are you sure?' }
+                %> |
+            <% end %>
+
+          </div>
+
+          <br />
+        <% end %>
+
       <% end %>
 
       <br />
@@ -33,6 +59,7 @@
 
     <% if signed_in? %>
       <%= link_to 'Edit', edit_post_path(@post) %> |
+      <%= link_to 'Add Pages', new_post_page_path(@post) %> |
     <% end %>
     <%= link_to 'All Posts', posts_path %>
   

@@ -34,8 +34,8 @@ before_filter :init
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-
-    redirect_to posts_url
+    flash[:success] = "Comment Deleted"
+    redirect_to @commentable
   end
 
 private

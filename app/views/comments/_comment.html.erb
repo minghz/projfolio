@@ -5,13 +5,12 @@
     <div class="comment_box">
         <b><%= comment.commenter %></b>
         <p><%= comment.body %> </p>
-        <% if false %>
-        TODO: Find some way to delete comments!!  
-        <p>
-        <%= link_to 'Destroy Comment', comment,
-                :confirm => 'Are you sure?',
-                :method => :delete %>
-        <p>
+        <% if signed_in? && current_user.admin? %>
+          <%= link_to 'Destroy Comment',
+            url_for([@commentable, comment]),
+            method: :delete,
+            data: { confirm: 'Are you sure?' }
+          %>
         <% end %>
     </div>
 <% end %>

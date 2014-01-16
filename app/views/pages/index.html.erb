@@ -1,0 +1,31 @@
+<h1>Listing pages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pageable.pages.each do |page| %>
+      <tr>
+        <td><%= page.name %></td>
+        <td>
+          <%= image_tag page.image_url.to_s %>
+        </td>
+        <td><%= link_to 'Show', url_for([@pageable, page]) %></td>
+        <td><%= link_to 'Edit', edit_polymorphic_path([@pageable, page]) %></td>
+        <td><%= link_to 'Destroy', url_for([@pageable, page]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Page', new_post_page_path(@pageable) %>
