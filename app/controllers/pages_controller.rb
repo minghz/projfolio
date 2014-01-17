@@ -24,14 +24,14 @@ class PagesController < ApplicationController
 
   # POST /pages
   def create
-    #@page = Page.new(page_params)
     @page = @pageable.pages.new(params[:page])
 
     if @page.save
       flash[:success] = 'Page was successfully created.'
       redirect_to @pageable
     else
-      render action: 'new'
+      flash[:error] = 'Page not created - missing something?'
+      redirect_to @pageable
     end
   end
 

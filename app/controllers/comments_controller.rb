@@ -8,22 +8,19 @@ before_filter :init
   end
 
   def new
-    #redirect_to @commentable
     @comment = @commentable.comments.new
   end
 
   def create
     @comment = @commentable.comments.new(params[:comment])
-
-    @comment.user_id = current_user.id
-    #@comment.post_id = @id # post_id not used anymore, using polymorphic now
-    @comment.commenter = current_user.name
+    @comment.user = current_user
     
     if @comment.save
       flash[:success] = 'Comment created'
       redirect_to @commentable
     else
-      render :new #TODO redirect to original post 'posts/:id/'
+      flash[:error] = 'Comment not created - is body empty?'
+      redirect_to @commentable
     end
   end
 

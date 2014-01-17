@@ -1,5 +1,14 @@
 class User < ActiveRecord::Base
-  attr_accessible(:email, :name, :posts_attributes, :comments_attributes, :password, :password_confirmation)
+  attr_accessible :email,
+                  :name,
+                  :avatar,
+                  :remote_avatar_url,
+                  :remove_avatar,
+                  :posts_attributes,
+                  :comments_attributes,
+                  :password,
+                  :password_confirmation
+
   has_secure_password
 
   before_save { self.email.downcase! }
@@ -32,6 +41,8 @@ class User < ActiveRecord::Base
   #    :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }
   #end
   accepts_nested_attributes_for :comments
+
+  mount_uploader :avatar, AvatarUploader
 
   def send_password_reset
     generate_token(:password_reset_token)

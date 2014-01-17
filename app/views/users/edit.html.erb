@@ -6,6 +6,18 @@
     <%= form_for(@user) do |f| %>
         <%= render 'shared/error_messages' %>
 
+        <%= image_tag(@user.avatar_url) if @user.avatar? %>
+        <div class="field">
+          <%= f.label :remote_avatar_url, "or URL" %>
+          <%= f.text_field :remote_avatar_url %>
+        </div>
+        <div class="field">
+          <%= f.file_field :avatar %>
+        </div>
+        <div class="field">
+          <%= f.label :remove_avatar, "remove this avatar checkbox" %>
+          <%= f.check_box :remove_avatar %>
+        </div>
         <div class="field">
         <%= f.label :name %></br>
         <%= f.text_field :name %>
