@@ -28,10 +28,9 @@ class PagesController < ApplicationController
 
     if @page.save
       flash[:success] = 'Page was successfully created.'
-      redirect_to @pageable
+      redirect_to post_pages_url(@pageable)
     else
-      flash[:error] = 'Page not created - missing something?'
-      redirect_to @pageable
+      render :new
     end
   end
 
@@ -47,8 +46,8 @@ class PagesController < ApplicationController
   # DELETE /pages/1
   def destroy
     @page.destroy
-    redirect_to @pageable
     flash[:success] = 'Page was successfully destroyed.'
+    redirect_to post_pages_url(@pageable)
   end
 
   private

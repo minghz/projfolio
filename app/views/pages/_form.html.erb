@@ -1,17 +1,6 @@
 <%= form_for [@pageable, @page], :html => {:multipart => true} do |f| %>
-  <% if @page.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@page.errors.count, "error") %> 
-          prohibited this page from being saved:
-      </h2>
-
-      <ul>
-      <% @page.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  
+  <%= render "shared/form_errors", object: @page %>
 
   <div class="field">
     <%= f.label :name %><br>

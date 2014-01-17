@@ -18,12 +18,20 @@
         <td>
           <%= image_tag page.image_url.to_s %>
         </td>
-        <td><%= link_to 'Show', url_for([@pageable, page]) %></td>
-        <td><%= link_to 'Edit', edit_polymorphic_path([@pageable, page]) %></td>
-        <td><%= link_to 'Destroy', url_for([@pageable, page]), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+
+        <% if signed_in? && current_user.admin? %>
+        
+          <td><%= link_to 'Edit',
+                          edit_polymorphic_path([@pageable, page]) %></td>
+          <td><%= link_to 'Destroy',
+                          url_for([@pageable, page]),
+                          method: :delete,
+                          data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        </tr>
     <% end %>
-  </tbody>
+    </tbody>
+
 </table>
 
 <br>

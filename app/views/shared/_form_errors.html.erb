@@ -1,0 +1,15 @@
+<!-- Form errors detection -->
+  <% if object.errors.any? %>
+    <div data-alert class="alert-box warning">
+      <h3>
+        <%= pluralize(object.errors.count, "error") %>
+        prohibited this <%= object.class.name %> from being saved:
+      </h3>
+      <ul>
+        <% object.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<!-- end -->

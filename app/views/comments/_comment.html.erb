@@ -1,9 +1,10 @@
-<h3>Comments</h3>
+<h1>Comments</h1>
 <% @comments.each do |comment| %>
-  <div class="comment_box">
+  <div class="panel">
+    <h5><%= comment.user.name %></h5>
     <%= image_tag(comment.user.avatar_url) %>
-    <b><%= comment.user.name %></b>
-    <p><%= comment.body %> </p>
+    <%= comment.body %>
+
     <% if signed_in? && current_user.admin? %>
       <%= link_to 'Destroy Comment',
         url_for([@commentable, comment]),

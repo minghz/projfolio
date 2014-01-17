@@ -1,48 +1,35 @@
 <% @post.tags.build %>
 
 <%= form_for @post do |f| %>
-    <% if @post.errors.any? %>
-        <div id="error_explanation">
-        <h2>
-            <%= pluralize(@post.errors.count, "error") %>
-            prohibited this post from being saved:</h2>
-        <ul>
-            <% @post.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-        <% end %>
-        </ul>
-        </div>
-    <% end %>
+  
+  <%= render "shared/form_errors", object: @post %>
 
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title, "Title" %><br />
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :description %><br />
+    <%= f.label :description, "Synopsis" %><br />
     <%= f.text_area :description %>
   </div>
 
-
-
     <a href="#" id="add_step">Add Step</a>
-   
-
+    
     <div id="step_list">
-        <% if @steps_array %>
-            <span hidden><%= @steps_array.length%></span>
+      <% if @steps_array %>
+        <span hidden><%= @steps_array.length%></span>
         <br/>
-            <% @steps_array.each do |s| %>
-                <div class="one_step">
-                <b><%= @steps_array.index(s)+1 %></b>
-                <input class="post_step" 
-                    name="post[step][<%= @steps_array.index(s)+1 %>]" 
-                    type="text" value="<%= s %>"/>
-                <a href="#" class="remove_step"
-                        id="<%= @steps_array.index(s)+1 %>">Remove</a>
-                <br/>
-                </div>
-            <% end %>
+        <% @steps_array.each do |s| %>
+          <div class="one_step">
+          <b><%= @steps_array.index(s)+1 %></b>
+          <input class="post_step" 
+            name="post[step][<%= @steps_array.index(s)+1 %>]" 
+            type="text" value="<%= s %>"/>
+          <a href="#" class="remove_step"
+                  id="<%= @steps_array.index(s)+1 %>">Remove</a>
+          <br/>
+          </div>
+        <% end %>
 
         <% else %>
             <span hidden>0</span>
