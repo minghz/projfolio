@@ -13,19 +13,3 @@
   box-sizing: border-box;
 }
 
-//text_field and areas for form
-textarea, input {
-  color: #000;
-  border: 1px solid;
-  background-color: #E6C39C;
-}
-.submit{
-  color: #000;
-  background-color: #7397A7;
-  &:hover {
-    color: #fff;
-    background-color: #366274; }
-}
-
-// users index
-

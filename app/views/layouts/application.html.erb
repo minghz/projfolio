@@ -1,35 +1,24 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>ProjFolio</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tag %>
-</head>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<% if !current_page?(root_path) %>
-	<%= render 'layouts/menu' %>
-<% end %>
+    <title><%= content_for?(:title) ? yield(:title) : "Projfolio" %></title>
 
-<center>
-<% flash.each do |key, value| %>
-  <% if key.to_s == 'success' %>
-    <div class="flash-success"> <p><%= value %></p> </div>
-  <% elsif key.to_s == 'error' %>
-    <div class="flash-error"> <p><%= value %></p> </div>
-  <% else %>
-    <p><%= value %></p>
-  <% end %>
-<% end %>
-</center>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
 
-<%= yield %>
+  <body>
 
-<% if !current_page?(root_path) %>
-  <%= render 'layouts/footer' %>
-<% end %>
-
-<%= debug(params) if Rails.env.development? %>
-
-</body>
+    <%= render "layouts/menu" unless current_page?(root_url) %>
+    <%= render "layouts/flash" %>
+    
+    <%= yield %>
+  
+    <%= javascript_include_tag "application" %>
+    <%= render "layouts/footer" unless current_page?(root_url) %>
+  </body>
 </html>

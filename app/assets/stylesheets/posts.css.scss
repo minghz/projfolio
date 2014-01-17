@@ -2,77 +2,80 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div#edit_container{
-    margin: 0em 30em;
-}
-
-div#new_post_container{
-    margin: 0em 30em;
-}
-
-div.posts_table{
-    margin: 0em 10em;
-}
-div.post_box{
-	padding: 5px;
-    //border:1px solid black;
-    &:hover{
-        background: #F0CBAA;
-    }
-}
-
-//I suspect this class doesn't exist
-div#content{
-  margin: 0px;
-  padding: 0px;
-  position:relative;
-  height:600px;
-  width:1000px;
-  //border:1px solid black;
-}
-
-//non-existant for now
-div#summary{
-  position:absolute;
-  //padding-left: 10px;
-  //padding-right: 10px;
-  top:0px;
-  left:0px;
-  height:500px;
-  width:200px;
-  overflow:auto;
-  
-  //border:1px solid white;
-}
-
-div#post{
-    margin: 0em 20em;
-}
-
-div#posts{
-  //position:absolute;
-  position:relative;
-  top:0px;
-  width:100%;
-  overflow:auto;
-  //border:1px solid white;
-}
-
-//# is id, . is class
-table#post-summary{
-  margin: 20px;
-  //border:1px solid white;
-  width: auto;
-  //width: 800px;
-}
 
 
-div#footer{
-  color: white;
-  background-color: #810808;
-  text-align: center;
-  position:static;
-  height: 30px;
-  width:100%;
-  //border:1px solid black;
-}
+//div#edit_container{
+//    margin: 0em 30em;
+//}
+//
+//div#new_post_container{
+//    margin: 0em 30em;
+//}
+//
+//div.posts_table{
+//    margin: 0em 10em;
+//}
+//div.post_box{
+//	padding: 5px;
+//    //border:1px solid black;
+//    &:hover{
+//        background: #F0CBAA;
+//    }
+//}
+//
+////I suspect this class doesn't exist
+//div#content{
+//  margin: 0px;
+//  padding: 0px;
+//  position:relative;
+//  height:600px;
+//  width:1000px;
+//  //border:1px solid black;
+//}
+//
+////non-existant for now
+//div#summary{
+//  position:absolute;
+//  //padding-left: 10px;
+//  //padding-right: 10px;
+//  top:0px;
+//  left:0px;
+//  height:500px;
+//  width:200px;
+//  overflow:auto;
+//  
+//  //border:1px solid white;
+//}
+//
+//div#post{
+//    margin: 0em 20em;
+//}
+//
+//div#posts{
+//  //position:absolute;
+//  position:relative;
+//  top:0px;
+//  width:100%;
+//  overflow:auto;
+//  //border:1px solid white;
+//}
+//
+////# is id, . is class
+//table#post-summary{
+//  margin: 20px;
+//  //border:1px solid white;
+//  width: auto;
+//  //width: 800px;
+//}
+//
+//
+//div#footer{
+//  color: white;
+//  background-color: #810808;
+//  text-align: center;
+//  position:static;
+//  height: 30px;
+//  width:100%;
+//  //border:1px solid black;
+//}
+//

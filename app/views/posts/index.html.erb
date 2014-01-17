@@ -1,25 +1,33 @@
-
-<div class="posts_table">
+<div class="row">
   
   <% @posts.each do |post| %>
-    <div class="post_box" id="<%= post.id %>">
-      <b><%= link_to post.title, post %> by <%= post.user.name %></b>
-      <p><%= truncate(post.description,
-                      :length => 200,
-                      :separator => ' ') %></p>
-        
-      <% if signed_in? && current_user.admin? %> 
-        <%= link_to 'Edit', edit_post_path(post) %>
-        <%= link_to 'Destroy',
-                    post,
-                    confirm: 'Are you sure?',
-                    method: :delete %>
-      <% end %>
-    </div>
+
+    <div class="medium-4 columns">
+      <div class="panel">
+
+        <div class="post_box" id="<%= post.id %>">
+          <b><%= link_to post.title, post %> by <%= post.user.name %></b>
+          <p><%= truncate(post.description,
+                          :length => 200,
+                          :separator => ' ') %></p>
             
+          <% if signed_in? && current_user.admin? %> 
+            <%= link_to 'Edit', edit_post_path(post) %>
+            <%= link_to 'Destroy',
+                        post,
+                        confirm: 'Are you sure?',
+                        method: :delete %>
+          <% end %>
+
+        </div>
+
+      </div>
+    </div>
+
   <% end %>
 
-  <div class="pagination_box">
-  	<%= will_paginate @posts %>
-  </div>
+</div>
+
+<div class="pagination_box">
+  <%= will_paginate @posts %>
 </div>

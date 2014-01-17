@@ -2,21 +2,3 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div {
-  &.field, &.actions {
-    margin-bottom: 10px; } }
-
-div.field textarea{
-  height: 50px;
-}
-
-div#comments_container{
-    width: 400px;
-}
-
-div.comment_box{
-    margin: 1em;
-    padding: 20px;
-    background: #F0CBAA;
-
-}

@@ -34,6 +34,9 @@ gem 'carrierwave'
 # for image resizing
 gem 'rmagick'
 
+# my front-end framework
+gem 'foundation-rails'
+
 # To use ActiveModel has_secure_password
 
 # To use Jbuilder templates for JSON
