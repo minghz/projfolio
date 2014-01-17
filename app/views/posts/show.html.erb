@@ -57,7 +57,7 @@
 
     <br />
 
-    <% if signed_in? %>
+    <% if signed_in? && @post.user == current_user %>
       <%= link_to 'Edit', edit_post_path(@post) %> |
       <%= link_to 'Add Pages', new_post_page_path(@post) %> |
     <% end %>
