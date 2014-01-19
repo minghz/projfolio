@@ -69,4 +69,18 @@ Projfolio::Application.configure do
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default_url_options = { :host => "projfolio.herokuapp.com" }
 
+
+  # Heroku production enviroment has $MAILTRAP_HOST defined
+  # Development environment won't use these settings
+  if ENV['MAILTRAP_HOST'].present?
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :user_name => ENV['MAILTRAP_USER_NAME'],
+      :password => ENV['MAILTRAP_PASSWORD'],
+      :address => ENV['MAILTRAP_HOST'],
+      :port => ENV['MAILTRAP_PORT'],
+      :authentication => :plain
+    }
+  end
+
 end
