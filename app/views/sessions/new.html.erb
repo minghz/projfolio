@@ -1,23 +1,62 @@
 <% provide(:title, "Sign in") %>
 
-<div id="signin">
-    <h1>Sign in</h1>
+<div class="row">
+  <h1>Sign in</h1>
+  <hr />
 
-    <%= form_tag sessions_path do %>
-    <div class="field">
-        E-mail: <br />
-        <%= text_field_tag 'email'%>
-    </div>
-    <div class="field">
-        Password: <br />
-        <%= password_field_tag "password" %>
-    </div>
-    <div class="actions">
-        <%= submit_tag "Sign In", :class => "submit" %>
-    </div>
-    <% end %>
+  <%= form_tag sessions_path do %>
 
-    <p>New user? <%= link_to "Sign up now!", signup_path %></p>
-    <p>Forgot Password? <%= link_to "Retrieve It!", retrievals_path %></p>
+    <div class="row">
+      <div class="small-6 columns">
+        <div class="row">
+          <div class="small-4 columns">
+            <%= label_tag 'email', 'Email', class: "right inline" %>
+          </div>
+          <div class="small-8 columns">
+            <%= text_field_tag 'email' %>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="small-6 columns">
+        <div class="row">
+          <div class="small-4 columns">
+            <%= label_tag 'password', 'Password', class: "right inline" %>
+          </div>
+          <div class="small-8 columns">
+            <%= password_field_tag 'password' %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-6 columns">
+        <div class="row">
+          <div class="small-4 columns">
+          </div>
+          <div class="small-8 columns">
+            <%= submit_tag "Sign In", :class => "button" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
+  <div class="row">
+    <div class="small-6 columns">
+      <div class="row">
+        <div class="small-4 columns">
+        </div>
+        <div class="small-8 columns">
+          <p>New user? <%= link_to "Sign up now!", signup_path %></p>
+          <p>Forgot Password? <%= link_to "Retrieve It!", retrievals_path %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
 </div>

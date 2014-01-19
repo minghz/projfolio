@@ -1,56 +1,61 @@
 <div id="row">
+  <div class="large-10 columns"> 
+    <h1><%= @post.title %></h1>
+    <h5>by <%= @post.user.name %>
+      <% if signed_in? && @post.user == current_user %>
+        | <%= link_to 'Edit', edit_post_path(@post) %>
+        | <%= link_to 'Add Pages', new_post_page_path(@post) %> |
+      <% end %> 
+    </h5>
+    <hr />
+    <% if @post.banner_url != nil %>
+      <p><%= link_to image_tag(@post.banner_url.to_s),
+        post_pages_path(@post) %></p>
+    <% else %>
+      <p> No Banner! </p>
+      <%= link_to "Begin Reading", post_pages_path(@post) %>
+      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <% end %>
+      
+    <hr />
+    <div class="row">
+      <h3>Synopsis</h3>
+      <p><%= @post.description %></p>
+      <% unless @post.steps.empty? %>
+        <p>Steps: <%= @post.steps %> </p>
+      <% end %>
+    </div>
+    <hr />
+    <div class="row">
+      <% if @post.tags.any? %>
+        <p>Tags:<%= join_tags(@post) %></p>
+      <% end %>
+    </div>
+    <hr />
+  </div>
 
-    <div class="large-8 columns"> 
-      <h1><%= @post.title %></h1>
-      <h5>by <%= @post.user.name %>
-        <% if signed_in? && @post.user == current_user %>
-          <%= link_to 'Edit', edit_post_path(@post) %> |
-          <%= link_to 'Add Pages', new_post_page_path(@post) %>
-        <% end %> 
-      </h5>
-      <hr />
-        some kickass banner which is linked to 
-        <%= link_to "All Pages", post_pages_path(@post) %>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-      <hr />
-      <div id="row">
-        <h3>Synopsis</h3>
-        <p><%= @post.description %></p>
-        <% unless @post.steps.empty? %>
-          <p>Steps: <%= @post.steps %> </p>
-        <% end %>
-        <% if @post.tags.any? %>
-          <p>Tags:<%= join_tags(@post) %></p>
-        <% end %>
+  <div class="small-2 columns">
+    <% for i in 0..4 %>
+      <div class="panel">
+        <p>Add Space</p>
+        <p>Or Recommended /Similar comics</p>
       </div>
-    </div>
-
-    <div class="large-4 columns">
-
-      <% if @comments.any? %>
-        <%= render "comments/comment" %>
-      <% end %>
-
-      <% if signed_in? %>
-        <h3>Leave a Comment:</h3>
-          <%= render "comments/form" %>
-      <% end %>
-
-    </div>
-
-    <br />
-
+    <% end %>
+  </div>
 
 </div>
+
+<div class="row">
+  <div class="large-6 columns">
+    <% if @comments.any? %>
+      <%= render "comments/comment" %>
+    <% end %>
+    <% if signed_in? %>
+      <h3>Leave a Comment:</h3>
+        <%= render "comments/form" %>
+    <% end %>
+  </div>
+</div>
+
  
 

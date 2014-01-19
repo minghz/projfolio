@@ -1,14 +1,35 @@
 
-<div id="retrievals">
-    <h1>Reset your password</h1>
+<div class="row">
+  <h1>Reset your password</h1>
+  <hr />
 
-    <%= form_tag retrievals_path do %>
-    <div class="field">
-        The e-mail used for your account: <br />
-        <%= text_field_tag 'email'%>
+ 
+  <%= form_tag retrievals_path do %>
+
+    <div class="row">
+      <div class="small-6 columns">
+        <div class="row">
+          <div class="small-4 columns">
+            <%= label_tag 'email', "The e-mail used for you account", class: "right inline" %></br>
+          </div>
+          <div class="small-8 columns">
+            <%= text_field_tag 'email' %>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="actions">
-        <%= submit_tag "Reset", :class => "submit" %>
+
+    <div class="row">
+      <div class="small-6 columns">
+        <div class="row">
+          <div class="small-4 columns">
+          </div>
+          <div class="small-8 columns">
+            <%= submit_tag "Reset", :class => "button" %>
+          </div>
+        </div>
+      </div>
     </div>
-    <% end %>
+
+  <% end %>
 </div>
