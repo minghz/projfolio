@@ -15,7 +15,8 @@
 
     <%= render "layouts/menu" unless current_page?(root_url) %>
     <%= render "layouts/flash" %>
-    
+
+
     <%= yield %>
   
     <%= javascript_include_tag "application" %>

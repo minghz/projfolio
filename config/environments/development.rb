@@ -28,12 +28,30 @@ Projfolio::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
  
-  # Don't care if the mailer can't send
-  # In production, its set to true. There is some bug
-  #   not allowing me to send emails with localhost
-  config.action_mailer.raise_delivery_errors = false
+  # ATTENTION:
+  # for some reason the e-mail is not being received by Gmail
+  # it could be because of trash-email filtering from google.
+  # However, the pasword reset URL sent can be retrieved from the
+  # server logs.
+  # These URLs for password reset work.
 
   # Allow mailer url inclusion
-  config.action_mailer.perform_deliveries = true
   config.action_mailer.default_url_options = { :host => "localhost:3000" }
+
+  config.action_mailer.default_options = {
+    from: "minghz42@gmail.com"
+  }
+  
+  config.action_mailer.perform_deliveries = true
+  
+  # Don't care if the mailer can't send
+  config.action_mailer.raise_delivery_errors = true
+
+  # Deveopment specific mailing method. Lets use localhost for now
+  config.action_mailer.delivery_method = :sendmail
+    # Defaults to:
+    # config.action_mailer.sendmail_settings = {
+    #   location: '/usr/sbin/sendmail',
+    #   arguments: '-i -t'
+    # }
 end

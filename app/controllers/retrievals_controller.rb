@@ -5,7 +5,7 @@ class RetrievalsController < ApplicationController
 
   def create
     if params[:email] == ''
-      flash[:error] = "please enter something"
+      flash[:error] = "please enter your e-mail"
       render :new
     else
       user = User.find_by_email(params[:email].downcase)
