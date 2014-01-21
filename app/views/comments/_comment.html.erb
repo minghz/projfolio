@@ -1,5 +1,5 @@
 <h1>Comments</h1>
-<% @comments.each do |comment| %>
+<% comment_list.each do |comment| %>
   <div class="panel">
     <h5><%= comment.user.name %></h5>
     <%= image_tag(comment.user.avatar_url) %>

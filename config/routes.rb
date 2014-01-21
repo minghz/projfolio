@@ -12,7 +12,7 @@ Projfolio::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :retrievals, only: [:new, :create, :edit, :update]
 
-  get "home/index"
+  get '/new_posts', to: 'posts#new_posts'
 
   get '/signup',  to: 'users#new'
   get '/signin',  to: 'sessions#new'

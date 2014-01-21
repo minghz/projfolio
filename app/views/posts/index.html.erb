@@ -1,7 +1,27 @@
-  <div class="row">
-    <%= render "posts/post" %>
-  </div>
 
-<div class="pagination_box">
-  <%= will_paginate @posts %>
+<div class="row">
+  <h3>A community of Graphic Novel creators and lovers</h3>
+  <hr />
 </div>
+
+
+<div class="row">
+  <h2>Recently Updated</h2>
+</div>
+
+<div class="row">
+  <%= render "posts/post", post_list: @updated_posts %>
+  <hr />
+</div>
+
+<div class="row">
+  <h2>Newest Stories</h2>
+</div>
+
+<div class="row">
+  <%= render "posts/post", post_list: @newest_posts %>
+  <hr />
+</div>
+
+
+

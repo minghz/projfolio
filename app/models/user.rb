@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
 
   has_many :posts, :dependent => :destroy
   #has_many :comments, :dependent => :destroy
-  has_many :comments, :dependent => :destroy, :as => :commentable
+  has_many :comments, :dependent => :destroy
 
   accepts_nested_attributes_for :posts#, :allow_destroy => :true#,
   #    :reject_if => proc { |attrs| attrs.all? { |k, v| v.blank? } }

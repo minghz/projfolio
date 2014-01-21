@@ -1,5 +1,4 @@
-<div id="row">
-  <div class="large-10 columns"> 
+  <div class="small-10 columns"> 
     <h1><%= @post.title %></h1>
     <h5>by <%= @post.user.name %>
       <% if signed_in? && @post.user == current_user %>
@@ -48,14 +47,13 @@
 <div class="row">
   <div class="large-6 columns">
     <% if @comments.any? %>
-      <%= render "comments/comment" %>
+      <%= render "comments/comment", comment_list: @comments %>
     <% end %>
     <% if signed_in? %>
       <h3>Leave a Comment:</h3>
         <%= render "comments/form" %>
     <% end %>
   </div>
-</div>
 
  
 

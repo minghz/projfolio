@@ -1,28 +1,51 @@
-<div id="retrievals">
+<div class="row">
 
-<h1> Resetting Password </h1>
+  <h1> Resetting Password </h1>
+  <hr />
+  <%= form_for @user, :url => retrieval_path(params[:id]) do |f| %>
 
-<%= form_for @user, :url => retrieval_path(params[:id]) do |f| %>
-  <% if @user.errors.any? %>
-    <div class="error_messages">
-      <h2>Form is invalid</h2>
-      <ul>
-        <% for message in @user.errors.full_messages %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+    <div class="row">
+      <div class="small-6 columns">
+        <div class="row">
+          <div class="small-4 columns">
+            <%= f.label :password, 
+                        "New password",
+                        class: "right inline" %></br>
+          </div>
+          <div class="small-8 columns">
+            <%= f.password_field :password %>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div class="row">
+      <div class="small-6 columns">
+        <div class="row">
+          <div class="small-4 columns">
+            <%= f.label :password_confirmation, 
+                        "Confirm password",
+                        class: "right inline" %>
+          </div>
+          <div class="small-8 columns">
+            <%= f.password_field :password_confirmation %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="small-6 columns">
+        <div class="row">
+          <div class="small-4 columns">
+          </div>
+          <div class="small-8 columns">
+            <%=  f.submit "Update Password", :class => "button" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
   <% end %>
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Update Password" %>
-  </div>
-<% end %>
+
 </div>
