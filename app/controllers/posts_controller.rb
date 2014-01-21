@@ -6,9 +6,14 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.paginate(page: params[:page], 
-                           per_page: 12,
-                           :order => "created_at DESC")
+    @updated_posts = Post.order(updated_at: :desc)[0..5]
+    @newest_posts = Post.order(updated_at: :desc)[0..5]
+  end
+
+  def new_posts
+    @new_posts = Post.paginate(page: params[:page], 
+                          per_page: 12,
+                          :order => "created_at DESC")
   end
 
   # GET /posts/1
@@ -53,14 +58,14 @@ class PostsController < ApplicationController
     params[:post][:steps] = ""
     
     if params[:post][:step]
-        params[:post][:step].each do |k, v|
-            if params[:post][:step].length == k.to_i
-                params[:post][:steps] << v
-            else
-                params[:post][:steps] << v + '|'
-            end
+      params[:post][:step].each do |k, v|
+        if params[:post][:step].length == k.to_i
+          params[:post][:steps] << v
+        else
+          params[:post][:steps] << v + '|'
         end
-        params[:post].delete("step")
+      end
+      params[:post].delete("step")
     end
 
     #return render :text => params[:post]
