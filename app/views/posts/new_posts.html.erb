@@ -1,14 +1,10 @@
 <div class="row">
   <h2>Newest Stories</h2>
 </div>
-<div class="test_div" href="test">
-</div>
-  <%= will_paginate @new_posts %>
-<div class="row">
+<div class="row" id="all_posts">
   <%= render "posts/post", post_list: @new_posts %>
-  <hr />
 </div>
 
-
-
-
+<div class="row">
+  <%= will_paginate @new_posts %>
+</div>

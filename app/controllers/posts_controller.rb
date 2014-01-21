@@ -14,6 +14,16 @@ class PostsController < ApplicationController
     @new_posts = Post.paginate(page: params[:page], 
                           per_page: 12,
                           :order => "created_at DESC")
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
+    #if request.xml_http_request?
+    #  render '_post', :layout => false
+    #end
+
   end
 
   # GET /posts/1
