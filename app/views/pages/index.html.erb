@@ -1,39 +1,16 @@
+
+<div class="row">
 <h1>Listing pages</h1>
+  <% if signed_in? && current_user?(@owner) %>
+      <%= link_to 'New Page', new_post_page_path(@pageable), class: "button" %>
+  <% end %>
+</div>
+<div class="row" id="all_pages">
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+  <%= render "pages/page" %>
 
-  <tbody>
-    <% @pageable.pages.each do |page| %>
-      <tr>
-        <td><%= page.name %></td>
-        <td>
-          <%= image_tag page.image_url.to_s %>
-        </td>
+</div>
 
-        <% if signed_in? && current_user.admin? %>
-        
-          <td><%= link_to 'Edit',
-                          edit_polymorphic_path([@pageable, page]) %></td>
-          <td><%= link_to 'Destroy',
-                          url_for([@pageable, page]),
-                          method: :delete,
-                          data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-        </tr>
-    <% end %>
-    </tbody>
-
-</table>
-
-<br>
-
-<%= link_to 'New Page', new_post_page_path(@pageable) %>
+<div class="row">
+  <%= will_paginate @pages %>
+</div>

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  before_filter :post_owner, only: [:edit, :update, :destroy]
+  before_action :post_owner, only: [:edit, :update, :destroy]
   #http_basic_authenticate_with :name => "dhh", :password => "secret", :except => [:index, :show]
 
   # GET /posts

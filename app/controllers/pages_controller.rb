@@ -1,11 +1,20 @@
 class PagesController < ApplicationController
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
-
-  before_filter :init
+  before_action :set_pageable
+  before_action :set_owner
+  before_action :set_page, only: [:show, :update, :destroy]
+  before_action :post_owner, only: [:create, :edit, :update, :destroy]
 
   # GET /pages
   def index
-    @pages = Page.all
+    #@pages = Page.all
+    @pages = @pageable.pages.paginate(page: params[:page],
+                                          per_page: 3)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
   end
 
   # GET /pages/1
@@ -20,6 +29,7 @@ class PagesController < ApplicationController
 
   # GET /pages/1/edit
   def edit
+    @page = Page.find(params[:id])
   end
 
   # POST /pages
@@ -51,15 +61,33 @@ class PagesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_page
-      @page = Page.find(params[:id])
+    # don't edit if current user not page owner
+    def post_owner
+      if signed_in?
+        @owner = User.find(@pageable.user_id)
+        if current_user?(@owner)
+        else
+          flash[:error] = "You are not the owner!"
+          redirect_to(@pageable)
+        end
+      else
+        flash[:error] = "You are not signed in"
+        redirect_to(@pageable)
+      end
     end
-  
     # keep track of the owning Post through @pageable
-    def init
+    def set_pageable
       resource, id = request.path.split('/')[1, 2]
       @pageable = resource.singularize.classify.constantize.find(id)
+    end
+
+    #get the owner of the post in which the page belongs to
+    def set_owner
+      @owner = User.find(@pageable.user_id)
+    end
+    #get the current page
+    def set_page
+      @page = Page.find(params[:id])
     end
     # Only allow a trusted parameter "white list" through.
     def page_params

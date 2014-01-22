@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-# for endless scrolling
+# for endless scrolling when showing All New Posts
 jQuery ->
   if $('.pagination').length
     $(window).scroll ->
