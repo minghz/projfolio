@@ -2,33 +2,120 @@
   
   <%= render "shared/form_errors", object: @page %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :chapter %><br>
-    <%= f.text_field :chapter %>
-  </div>
-  <div class="field">
-    <%= f.label :number %><br>
-    <%= f.text_field :number %>
+  <div class="row">
+    <hr />
+    <div class="medium-6 columns">
+      <div class="row">
+        <div class="small-4 columns">
+          <%= f.label :name, "Page Name", class: "right inline" %>
+        </div>
+        <div class="small-8 columns">
+          <%= f.text_field :name %>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <p> Page </p>
-  <%= image_tag(@page.image_url) if @page.image? %>
-  <div class="field">
-    <%= f.file_field :image %>
+  <div class="row">
+    <div class="medium-6 columns">
+      <div class="row">
+        <div class="small-4 columns">
+          <%= f.label :chapter, "Chapter Name", class: "right inline" %>
+        </div>
+        <div class="small-8 columns">
+          <%= f.text_field :chapter %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :remote_image_url, "or image URL" %>
-    <br />
-    <%= f.text_field :remote_image_url %>
+  
+  <div class="row">
+    <div class="medium-6 columns">
+      <div class="row">
+        <div class="small-4 columns">
+          <%= f.label :number, "Number", class: "right inline" %>
+        </div>
+        <div class="small-8 columns">
+          <%= f.text_field :number %>
+        </div>
+      </div>
+    </div>
   </div>
-  <%= f.check_box :remove_image %>
+
+  <% if @page.image? %>
+    <div class="row">
+      <hr />
+      <h3> Current Page </h3>
+      <% if @page.image? && !@page.errors.any? %>
+      
+        <%= image_tag(@page.image_url,
+                      alt: @page.name) %>
+      <% else %>
+        <p> No Image! </p>
+        <hr />
+      <% end %>
 
 
-  <div class="actions">
-    <%= f.submit %>
+      <div class="row">
+        <div class="medium-6 columns">
+          <div class="row">
+            <div class="small-4 columns">
+              <%= f.label :image, "Upload Page", class: "right inline" %>
+            </div>
+            <div class="small-8 columns">
+              <%= f.file_field :image %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="medium-6 columns">
+          <div class="row">
+            <div class="small-4 columns">
+              <%= f.label :remote_image_url, "or", class: "right inline" %>
+            </div>
+            <div class="small-8 columns">
+              <div class="row collapse">
+                <div class="small-3 large-2 columns">
+                  <span class="prefix">http://</span>
+                </div>
+                <div class="small-9 large-10 columns">
+                  <%= f.text_field :remote_image_url,
+                                    placeholder: "Enter image URL..." %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="medium-6 columns">
+          <div class="row">
+            <div class="small-4 columns">
+              <%= f.label :remove_image, "Check to Remove Image", class: "right inline" %>
+            </div>
+            <div class="small-8 columns">
+              <%= f.check_box :remove_image %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <% end %>
+
+  <div class="row">
+    <hr />
+    <div class="medium-6 columns">
+      <div class="row">
+        <div class="medium-4 columns">
+        </div>
+        <div class="medium-8 columns">
+          <%= f.submit  "Submit", :class => 'button' %>
+        </div>
+      </div>
+    </div>
   </div>
+
 <% end %>
