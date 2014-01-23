@@ -130,7 +130,7 @@ class PostsController < ApplicationController
       if signed_in?
         post = Post.find(params[:id])
         @owner = User.find(post.user_id)
-        if current_user?(@owner)
+        if current_user?(@owner) || current_user.admin?
         else
           flash[:error] = "You are not the owner!"
           redirect_to(post)

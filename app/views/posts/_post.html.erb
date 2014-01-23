@@ -1,22 +1,26 @@
 <% post_list.each do |post| %>
   <div class="medium-4 columns">
-    <div class="panel">
 
-      <div class="post_box" id="<%= post.id %>">
-        <b><%= link_to post.title, post %> by <%= post.user.name %></b>
+    <div class="panel postBox" style="background-image: url('<%= post.banner_url %>'); " >
+
+      <div class="panel postBox info">
+        <h3><%= link_to post.title, post %> <small>by <%= post.user.name %></small></h3>
         <p><%= truncate(post.description,
-                        :length => 200,
-                        :separator => ' ') %></p>
-          
-        <% if signed_in? && current_user.admin? %> 
-          <%= link_to 'Edit', edit_post_path(post) %>
-          <%= link_to 'Destroy',
-                      post,
-                      confirm: 'Are you sure?',
-                      method: :delete %>
-        <% end %>
+                        :length => 150,
+                        :separator => ' ') %>
+        </p>
 
       </div>
+        <!-- As admin, I do whatever I want -->
+        <div class="row" style="position:absolute; bottom:0;">
+          <% if signed_in? && current_user.admin? %> 
+            <%= link_to 'Edit', edit_post_path(post) %>
+            <%= link_to 'Destroy',
+                        post,
+                        confirm: 'Are you sure?',
+                        method: :delete %>
+          <% end %>
+        </div>
 
     </div>
   </div>

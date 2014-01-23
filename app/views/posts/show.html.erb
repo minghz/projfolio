@@ -1,4 +1,5 @@
-  <div class="small-10 columns"> 
+<div class="small-10 columns">
+  <div class="row">
     <h1><%= @post.title %></h1>
     <h5>by <%= @post.user.name %>
       <% if signed_in? && @post.user == current_user %>
@@ -6,7 +7,9 @@
         | <%= link_to 'Add Pages', new_post_page_path(@post) %> |
       <% end %> 
     </h5>
-    <hr />
+  </div>
+  <hr />
+  <div class="row">
     <% if @post.banner_url != nil %>
       <p><%= link_to image_tag(@post.banner_url.to_s),
         post_pages_path(@post) %></p>
@@ -15,33 +18,34 @@
       <%= link_to "Begin Reading", post_pages_path(@post) %>
       <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     <% end %>
-      
-    <hr />
-    <div class="row">
+  </div>
+  <hr />
+  <div class="row">
+    <div class="small-10 columns">
       <h3>Synopsis</h3>
-      <p><%= @post.description %></p>
+      <p><%= simple_format(@post.description).html_safe %></p>
       <% unless @post.steps.empty? %>
         <p>Steps: <%= @post.steps %> </p>
       <% end %>
     </div>
-    <hr />
-    <div class="row">
-      <% if @post.tags.any? %>
-        <p>Tags:<%= join_tags(@post) %></p>
-      <% end %>
+    <div class="small-2 columns">
     </div>
-    <hr />
   </div>
-
-  <div class="small-2 columns">
-    <% for i in 0..4 %>
-      <div class="panel">
-        <p>Add Space</p>
-        <p>Or Recommended /Similar comics</p>
-      </div>
+  <hr />
+  <div class="row">
+    <% if @post.tags.any? %>
+      <p>Tags:<%= join_tags(@post) %></p>
     <% end %>
   </div>
+</div>
 
+<div class="small-2 columns">
+  <% for i in 0..4 %>
+    <div class="panel">
+      <p>Add Space</p>
+      <p>Or Recommended /Similar comics</p>
+    </div>
+  <% end %>
 </div>
 
 <div class="row">
@@ -51,9 +55,9 @@
     <% end %>
     <% if signed_in? %>
       <h3>Leave a Comment:</h3>
-        <%= render "comments/form" %>
+      <%= render "comments/form" %>
     <% end %>
   </div>
-
+</div>
  
 
