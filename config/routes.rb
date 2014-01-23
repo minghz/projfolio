@@ -19,6 +19,13 @@ Projfolio::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
   get '/retrievals', to: 'retrievals#new'
 
+# You ought to figure out a way to make custom error pages
+# For now, just displaying static error page
+#  get '/401', to: 'errors#unauthorized'
+#  get '/404', to: 'errors#not_found'
+#  get '/500', to: 'errors#error'
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
