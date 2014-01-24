@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       sign_in @user
-      flash[:success] = "Welcome to Projfolio"
+      flash[:success] = "Welcome to Wrapel"
       redirect_to @user
     else 
       render 'new'

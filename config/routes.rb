@@ -1,4 +1,4 @@
-Projfolio::Application.routes.draw do
+Wrapel::Application.routes.draw do
 
   resources :posts do
     resources :comments

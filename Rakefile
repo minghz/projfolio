@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Projfolio::Application.load_tasks
+Wrapel::Application.load_tasks

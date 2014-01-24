@@ -15,9 +15,9 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: projfolio_development
+  database: wrapel_development
   pool: 5
-  username: projfolio
+  username: wrapel
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -41,15 +41,15 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: projfolio_test
+  database: wrapel_test
   pool: 5
-  username: projfolio
+  username: wrapel
   password:
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: projfolio_prod
+  database: wrapel_prod
   pool: 5
-  username: projfolio
+  username: wrapel
   password:

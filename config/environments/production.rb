@@ -1,4 +1,4 @@
-Projfolio::Application.configure do
+Wrapel::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
@@ -67,7 +67,7 @@ Projfolio::Application.configure do
   # Allow mailer url inclusion
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.default_url_options = { :host => "projfolio.herokuapp.com" }
+  config.action_mailer.default_url_options = { :host => "wrapel.herokuapp.com" }
 
 
   # Heroku production enviroment has $MAILTRAP_HOST defined

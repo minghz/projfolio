@@ -2,7 +2,7 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
-Projfolio::Application.initialize!
+Wrapel::Application.initialize!
 
 #Configuring mailing smtp with Gmail
 #ActionMailer::Base.delivery_method = :smtp
