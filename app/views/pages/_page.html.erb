@@ -1,9 +1,9 @@
 <% @pages.each do |page| %>
   
-  <div class="small-10 columns">
+  <div class="small-11 columns">
     <%= image_tag page.image_url.to_s, alt: page.name, class: "center" %>
   </div>
-  <div class="small-2 columns">
+  <div class="small-1 columns">
     <% if (signed_in? && current_user?(@owner) ) || current_user.admin? %>
       <%= link_to 'Edit', edit_polymorphic_path([@pageable, page]) %>
       <%= link_to 'Destroy', url_for([@pageable, page]),
