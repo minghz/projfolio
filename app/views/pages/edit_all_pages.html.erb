@@ -1,0 +1,25 @@
+<div class="row">
+  <h1> Manage Pages - <%= link_to @pageable.title, @pageable %></h1>
+  <hr />
+</div>
+<div class="row">
+  <h3><%= link_to 'Add Pages', new_post_page_path %></h3>
+  <hr />
+  <h3> Listing all Pages </h3>
+  <% @pages.each do |p| %>
+    <div class="panel">
+      <%= image_tag p.image_url, style: 'width:100px;' %>
+      <%= 'name ' + p.name %> |
+      <%= 'chapter ' + p.chapter.to_s %> |
+      <%= 'number ' + p.number.to_s %>
+      <div class="small-1 columns">
+        <% if (signed_in? && current_user?(@owner) ) || current_user.admin? %>
+          <%= link_to 'Edit', edit_polymorphic_path([@pageable, p]) %>
+          <%= link_to 'Destroy', url_for([@pageable, p]),
+                                method: :delete,
+                                data: { confirm: 'Are you sure?' } %>
+        <% end %>
+    </div>
+    </div>
+  <% end %>
+</div>

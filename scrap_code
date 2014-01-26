@@ -1,0 +1,24 @@
+#HERE will be all legacy code!
+
+# for determining tags (Category) in each load of page,
+# and for removing category
+
+    <!-- Never mind this! -->
+    <% if false %>
+      <% if t.object.nil? || t.object.new_record? %>
+        <div class="small-8 columns">
+          <%= t.text_field :name %>
+        </div>
+      <% else %>
+        <div class="small-5 columns">
+          <%= t.text_field :name %>
+        </div>
+        <div class="small-2 columns">
+          <%= t.label :_destroy, 'Remove', class: "right inline" %>
+        </div>
+        <div class="small-1 columns">
+          <%= t.check_box :_destroy %>
+        </div>
+      <% end %>
+    <% end %>
+    <!-- End Never mind this! -->
