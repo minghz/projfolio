@@ -1,4 +1,4 @@
-<% @post.tags.build %>
+<% Array.new(3) { @post.tags.build } unless @post.tags.any? %>
 
 <%= form_for @post do |f| %>
   
@@ -115,6 +115,7 @@
   <div class="row">
     <hr />
     <div class="medium-6 columns">
+    
       <%= render :partial => 'tags/form',
                     :locals => {:form => f} %>
     </div>

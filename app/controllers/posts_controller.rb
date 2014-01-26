@@ -41,7 +41,7 @@ class PostsController < ApplicationController
   def new
     if signed_in?
       @post = Post.new
-      @step_string = "no-steps"
+      #@step_string = "no-steps"
 
     else
       flash[:error] = "Please sign in to post"
@@ -120,8 +120,11 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-
+    if @post.destroy
+      flash[:success] = 'Destroyed post: '+@post.title
+    else
+      flash[:error] = 'Could not destroy post: '+@post.title
+    end
     redirect_to posts_url
   end
 

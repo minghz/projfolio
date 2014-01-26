@@ -2,7 +2,7 @@
 <div class="row">
 <h1>Listing pages</h1>
   <% if signed_in? && current_user?(@owner) %>
-      <%= link_to 'New Page', new_post_page_path(@pageable), class: "button" %>
+      <%= link_to 'Manage Pages', post_pages_edit_all_pages_path, class: "button" %>
   <% end %>
 </div>
 <div class="row" id="all_pages">

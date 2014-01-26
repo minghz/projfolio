@@ -2,6 +2,8 @@ Wrapel::Application.routes.draw do
 
   resources :posts do
     resources :comments
+    
+    get '/pages/edit_all_pages', to: 'pages#edit_all_pages'
     resources :pages
   end
   resources :users
@@ -13,11 +15,12 @@ Wrapel::Application.routes.draw do
   resources :retrievals, only: [:new, :create, :edit, :update]
 
   get '/new_posts', to: 'posts#new_posts'
-
+  
   get '/signup',  to: 'users#new'
   get '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
   get '/retrievals', to: 'retrievals#new'
+
 
 # You ought to figure out a way to make custom error pages
 # For now, just displaying static error page

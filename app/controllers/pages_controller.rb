@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   before_action :set_pageable
   before_action :set_owner
   before_action :set_page, only: [:show, :update, :destroy]
-  before_action :post_owner, only: [:create, :edit, :update, :destroy]
+  before_action :post_owner, only: [:create, :edit, :edit_all_pages, :update, :destroy]
 
   # GET /pages
   def index
@@ -25,6 +25,11 @@ class PagesController < ApplicationController
   def new
     @page = @pageable.pages.new
     #@page = Page.new
+  end
+
+  # GET /pages/edit_all_pages
+  def edit_all_pages
+    @pages = @pageable.pages
   end
 
   # GET /pages/1/edit

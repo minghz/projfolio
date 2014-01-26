@@ -1,22 +1,21 @@
-<%= form.fields_for :tags do |t| %>
-  <div class="row">
-    <div class="small-4 columns">
-      <%= t.label :name, 'Tag', class: "right inline" %>
-    </div>
-    <% if t.object.nil? || t.object.new_record? %>
-      <div class="small-8 columns">
-        <%= t.text_field :name %>
-      </div>
-    <% else %>
-      <div class="small-5 columns">
-        <%= t.text_field :name %>
-      </div>
-      <div class="small-2 columns">
-        <%= t.label :_destroy, 'Remove', class: "right inline" %>
-      </div>
-      <div class="small-1 columns">
-        <%= t.check_box :_destroy %>
-      </div>
-    <% end %>
+<div class="row">
+
+  <div class="small-3 columns">
+    <%= label_tag 'Tags', 'Tags', class: 'right inline' %>
   </div>
-<% end %>
+
+  <%= form.fields_for :tags do |t| %>
+
+    <div class="small-3 columns">
+      <%= t.select(:name, [['Select', nil], 'Action', 'Comedy']) %>
+    </div>
+
+    <div class="small-3 columns">
+    </div>
+
+    <div class="small-3 columns">
+    </div>
+
+  <% end %>
+
+</div>
